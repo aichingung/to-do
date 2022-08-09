@@ -1,0 +1,37 @@
+<form class="user-group-newgroup" action="/todo/usergroups/<%= user_id %> " method="post">
+  <label for=""></label>
+  <input id="user-group-inputbox2" type="text" name="name" placeholder="new group here">
+  <button class="create-btn">+</button>
+</form>
+<h1 class="user-page-header1">Your Groups</h1>
+
+<section class="user-page-container">
+  <% lists.forEach(list => { %>
+
+    <a class="user-group-link" href="/todo/details/<%= list.id %>">
+      <ul class="group-list">
+        <li><%= list.list_name %></li>
+      </ul>
+    </a>
+    <form class="user-group-delete-btn" action="/todo/<%= list.id %>/delete" method="post">
+     <input type="hidden" name="_method" value="delete">
+     <input type="hidden" name="user_id" value="<%= user_id %>">
+     <button class="delete-btn">🗑️</button>
+  </form>
+
+  <form class="user-group-edit-btn" action="/todo/<%= list.id %>/edit" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="user_id" value="<%= user_id %>">
+    <label for=""></label>
+    <input id="user-group-inputbox" type="text" name="list_name" placeholder="edit group here">
+    <button class="edit-btn">✏</button>
+  </form>
+    
+  <% }) %>
+
+</section>
+
+
+
+
+

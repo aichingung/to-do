@@ -1,0 +1,35 @@
+<div class="return-btn-div"><a class="return-btn" href="/todo/usergroups/<%= currentUser.id %>">return</a></div>
+
+<form class="new-item-form" action="/todo/details/<%= group_id %>" method="post">
+  <label for=""></label>
+  <input class="new-item-inputbox" type="text" name="description" placeholder="new item here">
+  <button class="create-btn">+</button>
+</form>
+
+
+<section class="user-lists-container">
+<% items.forEach(item => { %>
+  <ul class="user-lists">
+    <li class="item"><%= item.description %></li>
+  </ul>
+  
+  <form class="user-list-delete-btn" action="/todo/<%= item.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="group_id" value="<%= group_id %>">
+    <button class="delete-btn">🗑️</button>
+  </form>
+
+  <form class="user-list-edit-btn" action="/todo/<%= item.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="group_id" value="<%= group_id %>">
+    <label for=""></label>
+    <input class="user-list-inputbox" type="text" name="name" placeholder="edit item name">
+    <button class="edit-btn">✏</button>
+  </form>
+
+<% }) %>
+
+</section>
+
+
+

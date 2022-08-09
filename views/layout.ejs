@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body> 
+    
+    
+    <script src="/app.js"></script>
+    
+    <% if (isLoggedIn) { %> 
+      
+      <form class="logout-btn" action="/todo/logout" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <br>
+        <button class="logout-btn">logout</button>
+      </form>
+      
+      <h3 class="animate__animated animate__bounce animate__repeat-2">Welcome, <%= currentUser.username %> !</h3>
+      
+      
+      <% } else { %>
+        
+        <div class="login-btn-div"><a class="login-btn" href="/todo/login">login</a></div>
+        
+        <% } %>
+        
+        <h1 class="layout-header">To - Do</h1>
+        
+        
+        <%- body %> 
+        
+  
+  <footer class="layout-footer">&copy; 2022 </footer>
+
+ 
+  
+</body>
+</html>
